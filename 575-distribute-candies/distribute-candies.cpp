@@ -12,6 +12,6 @@ public:
         int count = ump.size();
 
         if(count <= eat) return count;
-        else return n - eat;
+        else return eat;
     }
 };

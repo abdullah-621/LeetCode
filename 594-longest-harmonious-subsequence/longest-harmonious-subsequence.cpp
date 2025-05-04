@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findLHS(vector<int>& nums) {
-        map<int,int>freq;
+        unordered_map<int,int>freq;
 
         int maxLength = 0;
 

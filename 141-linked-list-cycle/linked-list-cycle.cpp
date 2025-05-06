@@ -8,13 +8,13 @@
  */
 class Solution {
 public:
-    bool hasCycle(ListNode *head) {
+    bool hasCycle(ListNode *head) {   // Floyd's Cycle Detection Algorithm
 
         ListNode *first = head;
         ListNode *slow = head;
 
         while(first != nullptr && first->next != nullptr){
-            
+
             first = first->next->next;
             slow = slow->next;
 

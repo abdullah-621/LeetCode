@@ -18,16 +18,7 @@ public:
             ans += st.top();
             st.pop();
         }
-        int i = 0;
-        int j = ans.size() - 1;
-
-        while(i < j){
-            char temp = ans[i];
-            ans[i] = ans[j];
-            ans[j] = temp;
-            i++;
-            j--;
-            }
+        reverse(ans.begin(), ans.end());
 
         return ans;
     }

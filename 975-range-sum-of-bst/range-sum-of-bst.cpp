@@ -15,9 +15,13 @@ public:
 
         if(root == nullptr) return;
 
-        SumNode(root->left ,low, high, sum);
+        if(root->val > low) SumNode(root->left ,low, high, sum);
         if(root->val >= low && root->val <= high) sum += root->val;
-        SumNode(root->right ,low, high, sum);
+        if(root->val < high) SumNode(root->right ,low, high, sum);
+
+        // SumNode(root->left ,low, high, sum);
+        // if(root->val >= low && root->val <= high) sum += root->val;
+        // SumNode(root->right ,low, high, sum);
     }
     int rangeSumBST(TreeNode* root, int low, int high) {
         int sum = 0;
@@ -29,22 +33,3 @@ public:
     }
 };
 
-// class Solution {
-// public:
-//     void SumNode(TreeNode* root, int low, int high, int &sum){
-//         if(root == nullptr) return;
-
-//         SumNode(root->left ,low, high, sum);
-
-//         if(root->val >= low && root->val <= high)
-//             sum += root->val;
-
-//         SumNode(root->right ,low, high, sum);
-//     }
-
-//     int rangeSumBST(TreeNode* root, int low, int high) {
-//         int sum = 0;
-//         SumNode(root, low, high, sum);
-//         return sum;
-//     }
-// };

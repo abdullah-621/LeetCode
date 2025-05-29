@@ -11,7 +11,7 @@ public:
 
         sort(nums.begin(), nums.end());
 
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < n - 2; i++){
 
             if(nums[i] > 0) break;  // After sorting first element of the nums is greater then 0 then on solution 
 

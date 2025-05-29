@@ -2,13 +2,18 @@ class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
 
-        sort(nums.begin(), nums.end());
         
         vector<vector<int>> ans;
 
         int n = nums.size();
 
+        if(n < 3) return ans; // if total element less then 3
+
+        sort(nums.begin(), nums.end());
+
         for(int i = 0; i < n; i++){
+
+            if(nums[i] > 0) break;  // After sorting first element of the nums is greater then 0 then on solution 
 
             if(i > 0 && nums[i] == nums[i - 1]) continue;
             int j = i + 1;
@@ -23,7 +28,6 @@ public:
                     while(j < k && nums[k] == nums[k - 1]) k--;
                     j++;
                     k--;
-                    // break;
                 }
                 else if(sum < 0) j++;
                 else k--;

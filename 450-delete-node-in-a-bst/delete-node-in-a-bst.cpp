@@ -11,39 +11,51 @@
  */
 class Solution {
 public:
-    TreeNode* findMin(TreeNode* node) {
-        while (node && node->left) node = node->left;
-        return node;
-    }
+    // TreeNode* delNode(TreeNode* root, int key)
+    // {
+        
+    // }
+    TreeNode* deleteNode(TreeNode* root, int key) 
+    {
+       
 
-    TreeNode* deleteNode(TreeNode* root, int key) {
-        if (root == nullptr) return nullptr;
-
-        if (key < root->val) {
+        if(root == nullptr) return nullptr;
+        if(key < root->val) 
+        {
             root->left = deleteNode(root->left, key);
         }
-        else if (key > root->val) {
+        else if(key > root->val)
+        {
             root->right = deleteNode(root->right, key);
-        }
-        else {
-            // Case 1: no child
-            if (!root->left && !root->right) {
+        } 
+        else 
+        {
+             // if no child
+            if(!root->left && !root->right)
+            {
                 delete root;
                 return nullptr;
             }
-            // Case 2: one child
-            else if (!root->left || !root->right) {
-                TreeNode* child = root->left ? root->left : root->right;
+            // if one child
+            else if(!root->left || !root->right)
+            {
+                TreeNode *child = root->left ? root->left : root->right;
                 delete root;
                 return child;
             }
-            // Case 3: two children
-            else {
-                TreeNode* successor = findMin(root->right);
-                root->val = successor->val;
-                root->right = deleteNode(root->right, successor->val);
+            // if two child
+            else
+            {
+                TreeNode *temp = root->left;
+                while(temp != nullptr && temp->right != nullptr)
+                {
+                    temp = temp->right;
+                }
+                root->val = temp->val;
+                root->left = deleteNode(root->left, temp->val);
             }
         }
+
         return root;
     }
 };

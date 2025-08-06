@@ -11,30 +11,25 @@
  */
 class Solution {
 public:
-    int getHeight(TreeNode *root)
+    int getBalance(TreeNode *root)
     {
         if(root == nullptr) return 0;
 
-        int left_height = getHeight(root->left);
-        int right_height = getHeight(root->right);
+        int left_height = getBalance(root->left);
 
-        return 1 + max(left_height, right_height);
-    }
-    // int getBalance(TreeNode *root)
-    // {
-    //     return getHeight(root->left) - getHeight(root->right);
-    // }
-    bool isBalanced(TreeNode* root) 
-    {
-        if(root == nullptr) return true;
+        if(left_height == -1) return -1;
 
-        int left_height = getHeight(root->left);
-        int right_height = getHeight(root->right);
+        int right_height = getBalance(root->right);
+        if(right_height == -1) return -1;
 
         int balance = left_height - right_height;
 
-        if (balance < -1 || balance > 1) return false;
+        if (balance < -1 || balance > 1) return -1;
 
-        return isBalanced(root->left) && isBalanced(root->right);
+        return 1 + max(left_height, right_height);
+    }
+    bool isBalanced(TreeNode* root) 
+    {
+        return getBalance(root) != -1;
     }
 };

@@ -20,22 +20,23 @@ class Solution(object):
 
         while q:
             l = len(q)
-            temp = []
+            temp = [0] * l
 
             for i in range(l):
+
                 node = q.popleft()
-                temp.append(node.val)
+                
+                index = i if left_to_right else (l - 1 - i)
+                temp[index] = node.val
 
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
             
-            if not left_to_right:
-                temp.reverse()
             
             ans.append(temp)
             left_to_right = not left_to_right
-            
+
         return ans
             

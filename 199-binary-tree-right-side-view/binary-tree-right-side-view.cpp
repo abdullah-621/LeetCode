@@ -26,13 +26,13 @@ public:
 
             while(n--)
             {
-                TreeNode *temp = q.front();
+                curr = q.front();
                 q.pop();
-                curr = temp;
 
-                if(temp->left) q.push(temp->left);
-                if(temp->right) q.push(temp->right);
+                if(curr->left) q.push(curr->left);
+                if(curr->right) q.push(curr->right);
             }
+
             result.push_back(curr->val);
         }
 

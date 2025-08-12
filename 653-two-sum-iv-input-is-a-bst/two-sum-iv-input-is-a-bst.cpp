@@ -25,18 +25,17 @@ public:
         inorder(root,arr);
         int i = 0;
         int j = arr.size() - 1;
-        bool flag = false;
+       
         while(i < j)
         {
             if(arr[i] + arr[j] == k)
             {
-                flag = true;
-                break;
+                return true;
             }
             else if(arr[i] + arr[j] > k) j--;
             else i++;
         }
 
-        return flag;
+        return false;
     }
 };

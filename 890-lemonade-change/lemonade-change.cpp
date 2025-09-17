@@ -5,8 +5,9 @@ public:
         int no_of_10 = 0;
 
 
-        for(int note : bills)
+        for(int i = 0; i < bills.size(); i++)
         {
+            int note = bills[i];
 
             if(note == 5)
             {

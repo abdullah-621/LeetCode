@@ -36,13 +36,13 @@
 class Solution {
 public:
     int fib(int n) {
+
         vector<int> dp(n + 1, -1);
-        if(n > 0){
-        dp[0] = 0;
-        dp[1] = 1;
-        }
-        else
-        {
+        
+        if (n > 0) {
+            dp[0] = 0;
+            dp[1] = 1;
+        } else {
             dp[0] = 0;
         }
 

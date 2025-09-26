@@ -1,11 +1,37 @@
+// Recursive Approach
+// class Solution {
+// public:
+//     int fib(int n) {
+//         if(n <= 1)
+//         {
+//             return n;
+//         }
+
+//         return fib(n - 1) + fib(n - 2);
+//     }
+// };
+
+
+// Dynamic Programming Memoization(Top-Down)
 class Solution {
 public:
-    int fib(int n) {
-        if(n <= 1)
+    int DpMemo(int n, vector<int>&dp)
+    {
+        // base case
+        if(n <= 1) return n;
+
+        // Already calculated
+        if(dp[n] != -1)
         {
-            return n;
+         return dp[n];
         }
 
-        return fib(n - 1) + fib(n - 2);
+        return dp[n] = DpMemo(n - 1, dp) + DpMemo(n - 2, dp);
+    }
+
+    int fib(int n) {
+        
+        vector<int>dp(n + 1, -1);
+        return DpMemo(n, dp);
     }
 };

@@ -30,7 +30,6 @@ public:
     }
 
     int fib(int n) {
-        
         vector<int>dp(n + 1, -1);
         return DpMemo(n, dp);
     }

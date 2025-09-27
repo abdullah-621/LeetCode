@@ -6,7 +6,7 @@ public:
 
         while(l <= r)
         {
-            int mid = l + (r - l) / 2;
+            int mid = (r + l) / 2;
 
             if(nums[mid] < target)
             {

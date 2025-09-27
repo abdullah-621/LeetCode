@@ -1,25 +1,50 @@
 class Solution {
 public:
-    int triangleNumber(vector<int>& nums) {
-        int ans = 0;
-        int n = nums.size();
+    int BinarySearch(vector<int>&nums, int l, int r, int target)
+    {
+        int k = -1;
 
-        sort(nums.begin(), nums.end(), greater<int>());
-
-        for(int i = 0; i < n - 2; i++)
+        while(l <= r)
         {
-            for(int j = i+ 1; j < n - 1 ; j++)
+            int mid = l + (r - l) / 2;
+
+            if(nums[mid] < target)
             {
-                for(int k = j + 1; k < n; k++)
-                {
-                    if(nums[i] < nums[j] + nums[k])
-                    {
-                        ans++;
-                    }
-                }
+                k = mid;
+                l = mid + 1;
+            }
+            else{
+                r = mid - 1;
             }
         }
 
-        return ans;
+        return k;
+    }
+    int triangleNumber(vector<int>& nums) {
+       
+       sort(nums.begin(), nums.end());
+       int n = nums.size();
+
+       int count = 0;
+
+       for(int i = 0; i < n; i++)
+       {
+            if(nums[i] == 0)
+            continue;
+
+            for(int j = i + 1; j < n; j++)
+            {
+                int sum = nums[i] + nums[j];
+
+                int k = BinarySearch(nums, j + 1, n - 1, sum);
+
+                if(k != -1)
+                {
+                    count += (k - j);
+                }
+            }
+       }
+
+        return count;
     }
 };

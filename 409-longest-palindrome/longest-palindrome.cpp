@@ -1,17 +1,17 @@
 class Solution {
 public:
     int longestPalindrome(string s) {
-        unordered_map<char,int>up;
+        unordered_map<char,int>um;
 
         for(char ch : s)
         {
-            up[ch]++;
+            um[ch]++;
         }
 
         int result = 0;
         bool hasodd = false;
 
-        for(auto it : up)
+        for(auto it : um)
         {
             if(it.second % 2 != 0)
             {

@@ -20,9 +20,9 @@ public:
             }
         }
 
-        if(totalGas < totalCost) return -1;
+        return (totalGas < totalCost) ? -1 : start;
 
-        return start;
+        // return start;
 
     }
 };

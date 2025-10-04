@@ -1,20 +1,31 @@
-class Solution {
-public:
-    static bool comp(string a , string b)
+struct compare
+{
+    bool operator()(string a, string b)
     {
         return a + b > b + a;
     }
+};
+
+class Solution {
+public:
+    // static bool compare(string a , string b)
+    // {
+    //     return a + b > b + a;
+    // }
 
     string largestNumber(vector<int>& nums) {
 
         vector<string>st;
 
+        // convert to string
         for(int i : nums)
         {
             st.push_back(to_string(i));
         }
         
-        sort(st.begin(), st.end(), comp);
+        // sort the st with custom sorting
+        // sort(st.begin(), st.end(), compare);
+        sort(st.begin(), st.end(), compare());
 
         string ans = "";
 

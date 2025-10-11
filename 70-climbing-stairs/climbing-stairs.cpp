@@ -21,18 +21,40 @@
 
 
 // bottom - top
+// class Solution {
+// public:
+//     int climbStairs(int n) {
+//         vector<int>dp(n + 2, -1);
+//         dp[n] = 1;
+//         dp[n + 1] = 0;
+
+//         for(int i = n - 1; i >= 0; i--)
+//         {
+//             dp[i] = dp[i + 1] + dp[i + 2];
+//         }
+
+//         return dp[0];
+//     }
+// };
+
+
+// space optimization
 class Solution {
 public:
     int climbStairs(int n) {
-        vector<int>dp(n + 2, -1);
-        dp[n] = 1;
-        dp[n + 1] = 0;
 
-        for(int i = n - 1; i >= 0; i--)
+        int next2 = 0;
+        int next = 1;
+        int curr = 0;
+
+
+        for(int i = 0; i < n; i++)
         {
-            dp[i] = dp[i + 1] + dp[i + 2];
+            curr = next + next2;
+            next2 = next;
+            next = curr;
         }
 
-        return dp[0];
+        return curr;
     }
 };
